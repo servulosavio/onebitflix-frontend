@@ -27,6 +27,7 @@
 .input {
     border-color: $darkGray;
     background-color: transparent;
+    color: white;
 
     &::placeholder {
         color: $lightGray;
