@@ -10,7 +10,6 @@ import ToastComponent from "@/src/components/common/toast";
 
 const Register = function () {
   const router = useRouter();
-
   const [toastIsOpen, setToastIsOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
