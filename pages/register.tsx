@@ -3,7 +3,7 @@ import styles from "../styles/registerLogin.module.scss";
 import HeaderGeneric from "@/src/components/common/headerGeneric";
 import { Button, Container, Form, FormGroup, Input, Label } from "reactstrap";
 import Footer from "@/src/components/common/footer";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import authService from "@/src/services/authService";
 import { useRouter } from "next/router";
 import ToastComponent from "@/src/components/common/toast";
@@ -12,6 +12,12 @@ const Register = function () {
   const router = useRouter();
   const [toastIsOpen, setToastIsOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
+
+  useEffect(() => {
+    if (sessionStorage.getItem("onebitflix-token")) {
+      router.push("/home");
+    }
+  }, []);
 
   const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
