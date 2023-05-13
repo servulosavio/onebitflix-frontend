@@ -62,19 +62,19 @@ const courseService = {
     return res;
   },
 
+
+
+
   removeFav: async (courseId: number | string) => {
     const token = sessionStorage.getItem("onebitflix-token");
 
-    const res = await api
-      .delete("/favorites", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        data: { courseId },
-      })
-      .catch((error) => {
-        return error.response;
-      });
+    const res = await api.delete(`/favorites/${courseId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    }).catch((error) => {
+      return error.response;
+    });
 
     return res;
   },
@@ -115,6 +115,7 @@ const courseService = {
     const res = await api
       .delete(`/likes/${courseId}`, {
         headers: { Authorization: `Bearer ${token}` },
+        data: { courseId },
       })
       .catch((error) => {
         return error.response;
